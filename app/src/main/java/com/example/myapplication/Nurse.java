@@ -10,7 +10,6 @@ public class Nurse {
     int empNum;
     String empName, empSurname, empUserName;
 
-    public Nurse(int )
-        //
+
 
 }
