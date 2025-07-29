@@ -18,7 +18,7 @@ interface NurseDAO {
     @Query("select * from nurse")
     List<Nurse> getAllNurses();
 
-    @Query("select * from nurse where empNum = empNum")
+    @Query("select * from nurse where empNum== :empNum")
     Nurse getNurse(int empNum);
 
 }

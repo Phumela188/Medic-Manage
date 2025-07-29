@@ -26,13 +26,13 @@ public class Student {
     @ColumnInfo(name = "userName")
     String userName;
 
-    public Student(int stuNum, String stuName, String stuSurname, String userName, String foodReq, String medReq){
+    public Student(int stuNum, String stuName, String stuSurname, String userName, String foodReq, String medRequirement){
         this.stuNum = stuNum;
         this.stuName = stuName;
         this.stuSurname = stuSurname;
-        medRequirement = medReq;
         this.userName= userName;
         this.foodReq = foodReq;
+        this.medRequirement = medRequirement;
 
     }
 

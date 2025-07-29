@@ -13,14 +13,14 @@ public interface MedicationDAO {
         @Insert
         void addMedication(Medication medication);
         @Update
-        void updateFood(Medication medication);
+        void updateMedication(Medication medication);
         @Delete
-        void deleteFood(Medication medication);
+        void deleteMedication(Medication medication);
         @Query("select * from medication")
-        List<Food> getAllMedication();
+        List<Medication> getAllMedication();
 
-        @Query("select * from medication where medID = medID")
-        Food getFoodName(int medID);
+        @Query("select * from medication where medID== :medID")
+        Medication getMedName(int medID);
 
 
 }

@@ -8,4 +8,23 @@
     <string name="name" />
 
 
+
+        <string name="app_name">My Application</string>
+
+        <!-- Fix for fragment_first.xml -->
+        <string name="next">Next</string>
+        <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+        <!-- Fix for fragment_second.xml -->
+        <string name="previous">Previous</string>
+
+        <!-- Fix for menu_main.xml -->
+        <string name="action_settings">Settings</string>
+
+        <!-- Fix for nav_graph.xml -->
+        <string name="first_fragment_label">First Fragment</string>
+        <string name="second_fragment_label">Second Fragment</string>
+
+
+
 </resources>
