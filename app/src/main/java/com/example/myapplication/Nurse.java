@@ -21,7 +21,8 @@ public class Nurse {
     public Nurse(int empNum, String empName, String empSurname, String empUserName){
         this.empNum = empNum;
         this.empName = empName;
-        this.empSurname = this.empUserName;
+        this.empSurname = empSurname;
+        this.empUserName = empUserName;
 
     }
     @Ignore
@@ -41,7 +42,7 @@ public class Nurse {
 
     public void setEmpSurname(String empSurname) {this.empSurname = empSurname;}
 
-    public void setEmpUserName(String empSurname) {this.empSurname = empSurname;}
+    public void setEmpUserName(String empSurname) {this.empUserName = empSurname;}
 
 
 

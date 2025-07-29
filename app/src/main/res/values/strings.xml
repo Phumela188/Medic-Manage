@@ -4,6 +4,8 @@
     <string name="new_user_prompt">New to Medic Manage</string>
     <string name="signup_button_text">Sign Up</string>
     <string name="image_description">Logo</string>
+    <string name = "Medic_Manage">name</string>
+    <string name="name" />
 
 
 </resources>

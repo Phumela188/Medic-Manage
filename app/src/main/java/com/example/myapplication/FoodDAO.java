@@ -9,19 +9,19 @@ import java.util.List;
 
 import java.util.List;
 @Dao
-public interface FoodDAO {
+ interface FoodDAO {
 
         @Insert
-        public void addFood(Food food);
+        void addFood(Food food);
         @Update
-        public void updateFood(Food food );
+        void updateFood(Food food);
         @Delete
-        public void deleteFood(Food food);
+        void deleteFood(Food food);
         @Query("select * from food")
-        public List<Food> getAllFood();
+        List<Food> getAllFood();
 
         @Query("select * from food where foodID = foodID")
-        public Food getFoodName(int foodID);
+        Food getFoodName(int foodID);
 
     }
 

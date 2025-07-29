@@ -1,27 +1,25 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.myapplication.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,41 +28,92 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
+        binding.     fab.setOnClickListener(view -> showSignUpDialog());
+    }
+
+    private void showSignUpDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sign Up");
+
+        View dialogView = getLayoutInflater().inflate(R.layout.dialogue_signup, null);
+        builder.setView(dialogView);
+
+        EditText etUserType = dialogView.findViewById(R.id.etUserType);
+        EditText etId = dialogView.findViewById(R.id.etId);
+        EditText etFirstName = dialogView.findViewById(R.id.etFirstName);
+        EditText etSurname = dialogView.findViewById(R.id.etSurname);
+        EditText etUsername = dialogView.findViewById(R.id.etUsername);
+        EditText etMedReq = dialogView.findViewById(R.id.etMedReq);
+        EditText etFoodReq = dialogView.findViewById(R.id.etFoodReq);
+
+        builder.setPositiveButton("Sign Up", (dialog, which) -> {
+            try {
+                String userType = etUserType.getText().toString().trim();
+                int id = Integer.parseInt(etId.getText().toString());
+                String firstName = etFirstName.getText().toString().trim();
+                String surname = etSurname.getText().toString().trim();
+                String username = etUsername.getText().toString().trim();
+
+                if (firstName.isEmpty() || surname.isEmpty() || username.isEmpty()) {
+                    throw new IllegalArgumentException("All fields are required");
+                }
+
+                if (userType.equalsIgnoreCase("student")) {
+                    String medReq = etMedReq.getText().toString().trim();
+                    String foodReq = etFoodReq.getText().toString().trim();
+
+                    Student student = new Student();
+                    student.setStuNum(id);
+                    student.setStuName(firstName);
+                    student.setStuSurname(surname);
+                    student.setUserName(username);
+                    student.setMedRequirement(medReq);
+                    student.setFoodReq(foodReq);
+
+                    userViewModel.insertStudent(student);
+                    Snackbar.make(binding.getRoot(), "Student registered successfully!", Snackbar.LENGTH_SHORT).show();
+                }
+                else if (userType.equalsIgnoreCase("nurse")) {
+                    Nurse nurse = new Nurse();
+                    nurse.setEmpNum(id);
+                    nurse.setEmpName(firstName);
+                    nurse.setEmpSurname(surname);
+                    nurse.setEmpUserName(username);
+
+                    userViewModel.insertNurse(nurse);
+                    Snackbar.make(binding.getRoot(), "Nurse registered successfully!", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    throw new IllegalArgumentException("Invalid user type. Use 'student' or 'nurse'");
+                }
+            } catch (NumberFormatException e) {
+                Snackbar.make(binding.getRoot(), "Invalid ID format. Please enter numbers only", Snackbar.LENGTH_LONG).show();
+            } catch (IllegalArgumentException e) {
+                Snackbar.make(binding.getRoot(), e.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
+
+        builder.setNegativeButton("Cancel", null);
+        builder.create().show();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -31,6 +31,8 @@ public class Student {
         this.stuName = stuName;
         this.stuSurname = stuSurname;
         medRequirement = medReq;
+        this.userName= userName;
+        this.foodReq = foodReq;
 
     }
 

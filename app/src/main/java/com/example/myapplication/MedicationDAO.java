@@ -11,16 +11,16 @@ import java.util.List;
 public interface MedicationDAO {
 
         @Insert
-        public void addMedication(Medication medication);
+        void addMedication(Medication medication);
         @Update
-        public void updateFood(Medication medication);
+        void updateFood(Medication medication);
         @Delete
-        public void deleteFood(Medication medication);
+        void deleteFood(Medication medication);
         @Query("select * from medication")
-        public List<Food> getAllMedication();
+        List<Food> getAllMedication();
 
         @Query("select * from medication where medID = medID")
-        public Food getFoodName(int medID);
+        Food getFoodName(int medID);
 
 
 }

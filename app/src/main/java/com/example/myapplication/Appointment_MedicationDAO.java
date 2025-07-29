@@ -1,4 +1,3 @@
 package com.example.myapplication;
-
-public interface Appointment_MedicationDAO {
+interface Appointment_MedicationDAO {
 }

@@ -8,16 +8,16 @@ import androidx.room.Update;
 
 import java.util.List;
 @Dao
-public interface StudentDAO {
+interface StudentDAO {
         @Insert
-        public void addStudent(Student student);
+        void addStudent(Student student);
         @Update
-        public void updateStudent(Student student);
+        void updateStudent(Student student);
         @Delete
-        public void deleteStudent(Student student);
+        void deleteStudent(Student student);
         @Query("select * from student")
-        public List<Student> getAllStudents();
+        List<Student> getAllStudents();
 
         @Query("select * from student where stuNum==:stuNum")
-        public Student getStudent(int stuNum);
+        Student getStudent(int stuNum);
 }

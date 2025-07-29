@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fab"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue">
@@ -12,10 +13,11 @@
         android:layout_width="309dp"
         android:layout_height="357dp"
         android:contentDescription="@string/image_description"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="153dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView"
@@ -24,34 +26,31 @@
         android:text="@string/welcome_text"
         android:textColor="@color/yellow"
         android:textSize="13pt"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="35dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="242dp"
         android:layout_height="65dp"
-        android:layout_marginTop="8dp"
         android:backgroundTint="@color/yellow"
         android:text="@string/login_button_text"
-
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="84dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:text="@string/new_user_prompt"
         android:textColor="@color/yellow"
         android:textSize="7pt"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        tools:layout_editor_absoluteX="121dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button5"
@@ -59,8 +58,8 @@
         android:layout_height="54dp"
         android:backgroundTint="@color/material_on_background_disabled"
         android:text="@string/signup_button_text"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="650dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
